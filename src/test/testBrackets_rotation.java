@@ -125,7 +125,7 @@ public class testBrackets_rotation {
 
 		assertEquals(4, resultado);
 	}
-	
+
 	@Test
 	public void test3() {
 		String S = ")))((()(((";
@@ -133,6 +133,24 @@ public class testBrackets_rotation {
 		int resultado = classe.solucao5(S, 3);
 
 		assertEquals(8, resultado);
+	}
+
+	@Test
+	public void test4SemRotacaoCom8() {
+		String S = "(((())))";
+		brackets_rotation classe = new brackets_rotation();
+		int resultado = classe.solucao5(S, 0);
+
+		assertEquals(8, resultado);
+	}
+
+	@Test @Ignore
+	public void test5() {
+		String S = "()(()))()(((";
+		brackets_rotation classe = new brackets_rotation();
+		int resultado = classe.solucao5(S, 2);
+
+		assertEquals(10, resultado);
 	}
 
 }
