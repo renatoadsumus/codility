@@ -125,5 +125,14 @@ public class testBrackets_rotation {
 
 		assertEquals(4, resultado);
 	}
+	
+	@Test
+	public void test3() {
+		String S = ")))((()(((";
+		brackets_rotation classe = new brackets_rotation();
+		int resultado = classe.solucao5(S, 3);
+
+		assertEquals(8, resultado);
+	}
 
 }

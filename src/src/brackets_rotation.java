@@ -40,7 +40,7 @@ public class brackets_rotation {
 		 */
 
 		String S = ")()()("; // k=3 Retorna 6 // -2 FALHA
-		S = "()(()"; // K=0 Retorna 8
+		S = "((()((("; // K=0 Retorna 8
 		// S = ")))(((";
 		// S = "()))((()";
 		// S = "(())()"; //k=0 Retorna 6
@@ -92,16 +92,16 @@ public class brackets_rotation {
 					int aberto = 0;
 					int fechado = 0;
 
-					while (list.get(x).equals("(")) {
+					System.out.println("I:" + i);
+
+					while (!aux.equals("()") && x < list.size() - 1) {
+
+						System.out.println("Dentro" + x);
+
+						aux = list.get(x) + list.get(x + 1);
 						aberto++;
 						x++;
-
-						if (list.size() - 1 == x) {
-							aberto++;
-							break;
-						}
 					}
-				
 
 					while (list.get(x).equals(")")) {
 						fechado++;
@@ -111,22 +111,17 @@ public class brackets_rotation {
 					}
 
 					if (fechado > aberto) {
-						// Voltando para For no I que parou antes de entrar no
-						// ELSE
 						i = fechado + i - 1;
 						result = result + (2 * aberto);
 					} else {
-						i = x;
+						i = x - 1;
 						result = result + (2 * fechado);
 					}
 
-					if (aberto > fechado) {					
-						int add = aberto - fechado;
+					if (aberto > fechado) {
 
-						for (int y = 0; y < add; y++) {
-
-							if (i != list.size() - 2)
-								novaLista.add("(");
+						for (int y = fechado; y < aberto; y++) {
+							novaLista.add("(");
 						}
 
 					}
@@ -151,10 +146,11 @@ public class brackets_rotation {
 		int result = 0;
 		String aux = "";
 
-		// System.out.println("Entrei Na Funcao Contar..:");
+		ArrayList<String> novaLista2 = new ArrayList<String>();
 
 		for (int j = 0; j < novaLista.size() - 1; j++) {
 			aux = novaLista.get(j) + novaLista.get(j + 1);
+			System.out.println("Aux..: J+1" + aux);
 
 			if (aux.equals("))") && K > 0) {
 				result = result + 2;
@@ -169,9 +165,24 @@ public class brackets_rotation {
 			}
 
 			if (aux.equals(")(") && K > 1) {
-				result = result + 2;
-				K = K - 2;
-				j++;
+
+				if (j < novaLista.size() - 2) {
+
+					aux = novaLista.get(j + 1) + novaLista.get(j + 2);
+
+					if (aux.equals("((")) {
+						K--;
+						j = j + 2;
+						result = result + 2;
+					}
+
+				}
+
+				if (K > 1) {
+					K = K - 2;
+					result = result + 2;
+				}
+
 			}
 		}
 
