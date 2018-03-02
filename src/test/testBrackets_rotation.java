@@ -144,13 +144,33 @@ public class testBrackets_rotation {
 		assertEquals(8, resultado);
 	}
 
-	@Test @Ignore
+	@Test
 	public void test5() {
-		String S = "()(()))()(((";
+		String S = "()(()))()(((";		
 		brackets_rotation classe = new brackets_rotation();
 		int resultado = classe.solucao5(S, 2);
 
 		assertEquals(10, resultado);
 	}
+
+	@Test
+	public void test6() {
+		String S = "(((())";		
+		brackets_rotation classe = new brackets_rotation();
+		int resultado = classe.solucao5(S, 1);
+
+		assertEquals(6, resultado);
+	}
+	
+	@Test
+	public void test7() {
+		String S = "(()))))(()((()))";		
+		brackets_rotation classe = new brackets_rotation();
+		int resultado = classe.solucao5(S, 1);
+
+		assertEquals(8, resultado);
+	}
+	
+	
 
 }

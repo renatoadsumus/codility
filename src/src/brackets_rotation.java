@@ -102,16 +102,26 @@ public class brackets_rotation {
 					}
 
 					if (fechado > aberto) {
-						i = fechado + i - 1;
+						// i = fechado + i ;
+						i = i + (2 * aberto) - 1;
+						// Removendo o -1 passa o cenário test5
+						//i = fechado + i - 1;
 						result = result + (2 * aberto);
 					}
 
 					if (aberto >= fechado) {
+						//System.out.println(i);
 						i = x - 1;
 						result = result + (2 * fechado);
 						for (int y = fechado; y < aberto; y++) {
 							novaLista.add("(");
 						}
+					}
+
+					if (i >= list.size() - 1) {
+						result = result + contar(novaLista, K);
+						break;
+
 					}
 
 				}
@@ -133,6 +143,8 @@ public class brackets_rotation {
 
 		int countOpostos = 0;
 
+		//System.out.println("Lista..:" + novaLista);
+
 		for (int j = 0; j < novaLista.size() - 1; j++) {
 			aux = novaLista.get(j) + novaLista.get(j + 1);
 
@@ -149,7 +161,7 @@ public class brackets_rotation {
 			}
 
 			if (aux.equals(")(") && K > 1) {
-				countOpostos = countOpostos + 1;
+				countOpostos = countOpostos + 2;
 
 				if (j < novaLista.size() - 2) {
 
@@ -160,14 +172,21 @@ public class brackets_rotation {
 						j = j + 2;
 						result = result + 2;
 					}
-
 				}
 
-				if (K > 1) {
-					K = K - 2;
-					result = result + 2;
-				}
+			}
+		}
 
+		// Entender a Relação Entre os Contadores de K
+		if (K > 1 && countOpostos > 1) {
+
+			if (K >= countOpostos) {
+				K = K - countOpostos;
+				result = result + countOpostos;
+			} else {
+				int qtdK = (K % 2);
+				K = K - qtdK;
+				result = result + 2 * qtdK;
 			}
 		}
 
