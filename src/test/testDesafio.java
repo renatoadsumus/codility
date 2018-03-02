@@ -5,42 +5,74 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import src.Desafio;
+import src.Desafio2;
 import src.brackets_rotation;
 
 public class testDesafio {
 
 	@Test
-	public void test1() {
+	public void testFourWords() {
 
-		String S = ")()()("; 
+		String S = "We test coders. Give us a try?"; 
 
 		Desafio desafio = new Desafio();
-		int resultado = desafio.solucao(S, 3);
+		int resultado = desafio.solution(S);
 
-		assertEquals(0, resultado);
+		assertEquals(4, resultado);
 	}
 	
 	
 	@Test
-	public void test2() {
+	public void testTwoWords() {
 
-		String S = ")()()(";
+		String S = "Forget  CVs..Save time . x x";
 
 		Desafio desafio = new Desafio();
-		int resultado = desafio.solucao(S, 3);
+		int resultado = desafio.solution(S);
 
-		assertEquals(0, resultado);
+		assertEquals(2, resultado);
 	}
 	
 	@Test
-	public void test3() {
+	public void testThreerWords() {
 
-		String S = ")()()(";
-
+		String S = "Tomorow I want. car. free time";
 		Desafio desafio = new Desafio();
-		int resultado = desafio.solucao(S, 3);
+		int resultado = desafio.solution(S);
 
-		assertEquals(0, resultado);
+		assertEquals(3, resultado);
+	}
+	
+	
+	@Test
+	public void testSevenrWordsWithQuestionMark() {
+
+		String S = "Tomorow I want. car. free time? And after the trip I want play";
+		Desafio desafio = new Desafio();
+		int resultado = desafio.solution(S);
+
+		assertEquals(7, resultado);
+	}
+	
+	
+	@Test
+	public void testSevenrWordsWithTwoQuestionMark() {
+
+		String S = "Tomorow I want. car. free time? And after the trip I want play. ok?";
+		Desafio desafio = new Desafio();
+		int resultado = desafio.solution(S);
+
+		assertEquals(7, resultado);
+	}
+	
+	@Test
+	public void testNineWordsWithTwoQuestionMark() {
+
+		String S = "Tomorow I want. car. free time? And after the trip I want play. ok? Paul you are so pretty boy and so smart";
+		Desafio desafio = new Desafio();
+		int resultado = desafio.solution(S);
+
+		assertEquals(9, resultado);
 	}
 
 }
