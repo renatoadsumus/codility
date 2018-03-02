@@ -101,16 +101,12 @@ public class brackets_rotation {
 							break;
 					}
 
-					if (fechado > aberto) {
-						// i = fechado + i ;
-						i = i + (2 * aberto) - 1;
-						// Removendo o -1 passa o cenário test5
-						//i = fechado + i - 1;
+					if (fechado > aberto) {						
+						i = i + (2 * aberto) - 1;	
 						result = result + (2 * aberto);
 					}
 
-					if (aberto >= fechado) {
-						//System.out.println(i);
+					if (aberto >= fechado) {						
 						i = x - 1;
 						result = result + (2 * fechado);
 						for (int y = fechado; y < aberto; y++) {
@@ -128,10 +124,7 @@ public class brackets_rotation {
 
 			}
 
-		}
-
-		// System.out.println("Lista..:" + novaLista);
-		// System.out.println("Resultado Final..:" + result);
+		}	
 
 		return result;
 
